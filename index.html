@@ -10,15 +10,18 @@
     <input id="a">
     <label> + </label>
     <input id="b">
-    <button onclick='addNums()'>=</button>
-    <label id="sum">0</label>
+    <button onclick='add()'>=</button>
+    <label id="sum"></label>
 
     <script>
-        function addNums() {
-            let a = document.getElementById('a').value;
-            let b = document.getElementById("b").value;
-            let sum = Number(a) + Number(b);
-            document.getElementById('sum').innerHTML = sum;
+        async function add() {
+            const aInput = document.getElementById("a")
+            const bInput = document.getElementById("b")//get value
+            let n = aInput.value
+            let m = bInput.value
+            const response = await fetch("http://localhost:3000/add/"+n+"/"+m)
+            let sum = await response.json()
+            document.getElementById("sum").innerHTML = sum
         }
     </script>
 </body>
