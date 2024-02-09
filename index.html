@@ -19,9 +19,9 @@
             const bInput = document.getElementById("b")//get value
             let n = aInput.value
             let m = bInput.value
-            const response = await fetch("http://arithmetic-service-arlindvall.onrender.com//add/" + n + "/" + m)
+            const response = await fetch("https://arithmetic-service-arlindvall.onrender.com//add/" + n + "/" + m)
             let sum = await response.json()
-            document.getElementById("sum").innerText = sum
+            document.getElementById("sum").innerHTML = sum
         }
     </script>
 </body>
