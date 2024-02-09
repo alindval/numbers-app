@@ -21,7 +21,7 @@
             let m = bInput.value
             const response = await fetch("http://arithmetic-service-arlindvall.onrender.com//add/" + n + "/" + m)
             let sum = await response.json()
-            document.getElementById("sum").innerHTML = sum
+            document.getElementById("sum").innerText = sum
         }
     </script>
 </body>
