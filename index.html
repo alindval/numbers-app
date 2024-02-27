@@ -1,29 +1,113 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--    <title>Arithmetic</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <h1>Arithmetic</h1>-->
+<!--    <input id="a">-->
+<!--    <label> + </label>-->
+<!--    <input id="b">-->
+<!--    <button onclick='add()'>=</button>-->
+<!--    <label id="sum"></label>-->
+
+<!--    <script>-->
+<!--        async function add() {-->
+<!--            const aInput = document.getElementById("a")-->
+<!--            const bInput = document.getElementById("b")//get value-->
+<!--            let n = aInput.value-->
+<!--            let m = bInput.value-->
+<!--            const response = await fetch("https://arithmetic-service-arlindvall.onrender.com/add/" + n + "/" + m)-->
+<!--            let sum = await response.json()-->
+<!--            document.getElementById("sum").innerText = sum-->
+<!--        }-->
+<!--    </script>-->
+<!--</body>-->
+
+<!--</html>-->
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Arithmetic</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
 
-<body>
-    <h1>Arithmetic</h1>
-    <input id="a">
-    <label> + </label>
-    <input id="b">
-    <button onclick='add()'>=</button>
-    <label id="sum"></label>
-
-    <script>
-        async function add() {
-            const aInput = document.getElementById("a")
-            const bInput = document.getElementById("b")//get value
-            let n = aInput.value
-            let m = bInput.value
-            const response = await fetch("https://arithmetic-service-arlindvall.onrender.com/add/" + n + "/" + m)
-            let sum = await response.json()
-            document.getElementById("sum").innerText = sum
         }
-    </script>
-</body>
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="column">
+        <section>
+            <h2>Arithmetic</h2>
+            <input id="operand1"/>
+            <label>+</label>
+            <input id="operand2"/>
+            <button onclick="add()">=</button>
+            <label id="sum"></label>
+        </section>
+    </div>
+    <div class="column">
+        <section>
+            <h2>Prime check</h2>
+            <label>Number to test:</label>
+            <input id="numberToTest"/>
+            <button onclick="isPrime()">Check</button>
+            <label id="primeCheckResult"></label>
+        </section>
+    </div>
+    <div class="column">
+        <section>
+            <h2>Caesar Cipher</h2>
+            <label>Cipher:</label>
+            <input id="textToCipher"/>
+            <button onclick="cipher()">Cipher</button>
+            <label id="cipher"></label>
+        </section>
+    </div>
+</div>
 
+
+<script>
+    async function add() {
+        const operand1Input = document.getElementById("operand1");
+        const operand2Input = document.getElementById("operand2");
+        let n = operand1Input.value;
+        let m = operand2Input.value;
+        const response = await fetch("https://arithmetic-service.onrender.com/add/" + n + "/" + m);
+        const sum = await response.json();
+        document.getElementById("sum").innerText = sum;
+    }
+
+    async function isPrime() {
+        const numberToTest = document.getElementById("numberToTest");
+        let n = numberToTest.value;
+        const response = await fetch("???" + n);//sends to backend, http request; await waits for response
+        const result = await response.json();//waits for response to be converted to json
+        document.getElementById("primeCheckResult").innerText = result;//displays result
+    }
+
+    async function cipher(){
+        const numberToTest=document.getElementById("textToCipher");
+        let plainText = numberToTest.value;
+        const response = await fetch("https://ciphers-service-arlindvall.onrender.com/ciphers/" + n plainText);
+        const result = await response.json();
+        document.getElementById("cipher").innerText = sum;   
+    }
+    
+</script>
+</body>
 </html>
